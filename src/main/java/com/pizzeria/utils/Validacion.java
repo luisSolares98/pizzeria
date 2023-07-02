@@ -15,6 +15,9 @@ public class Validacion {
         if (isNullEmpety(pedido.getFecha())) return true;
         if (isCeroMenor(pedido.getOpcionPizza())) return true;
         if (isNullEmpety(pedido.getFecha())) return true;
+        if(pedido.getOpcionPizza() == 0) {
+            return isNullEmpety(pedido.getPizza());
+        }
         return false;
     }
 }
