@@ -14,8 +14,9 @@ public class ControllerPizza {
     @Autowired
     ServicePizza servicePizza;
     @PostMapping("/")
-    public Recibo registroPedido(@RequestBody Pedido pedido) {
-        return servicePizza.pedido(pedido);
+    public Object registroPedido(@RequestBody Pedido pedido) {
+        Recibo recibo = servicePizza.pedido(pedido);
+        return recibo == null ? "datos introducidos incorrectamente": recibo;
     }
     @GetMapping("/")
     public HashMap getPizzas() {

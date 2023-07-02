@@ -6,6 +6,7 @@ import com.pizzeria.model.Pizza;
 import com.pizzeria.builder.PizzaBuilder;
 import com.pizzeria.model.Recibo;
 import com.pizzeria.utils.Util;
+import com.pizzeria.utils.Validacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ public class ServicePizza {
         return this.util.getListPizza();
     }
     public Recibo pedido(Pedido pedido) {
+        if (Validacion.validacionPedido(pedido)) return null;
         Recibo recibo = new Recibo();
         recibo.setFecha(pedido.getFecha());
         recibo.setPromo(util.getPromo(pedido.getFecha()));
